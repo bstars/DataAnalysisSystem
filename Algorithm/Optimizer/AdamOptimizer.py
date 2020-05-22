@@ -16,7 +16,7 @@ class AdamOptimizer(Optimizer):
         self.beta2 = beta2
         self.eps = 1e-6
 
-    def fit(self, W, fn_grad):
+    def fit(self, W, fn_grad, callback=None):
         """
         :param learning_rate: learning rate of gradient descent.
         :param W: A dictionary which contains the initial value of weights
@@ -58,7 +58,6 @@ class AdamOptimizer(Optimizer):
                 mbc = m / (1 - beta1 ** (iter+1))                       # bias correction for exponential decay of momentum
                 momentum[grad_key] = m
 
-
                 # RMSprop part
                 accumulated = accumulated_grad[grad_key]
 
@@ -68,6 +67,9 @@ class AdamOptimizer(Optimizer):
                 accumulated_grad[grad_key] = accumulated
 
                 W_dict[weight_key] -= learning_rate * mbc / (np.sqrt(accumulated_bc) + eps)
+
+                if callback is not None:
+                    callback(iter, W_dict)
         return W_dict
 
 

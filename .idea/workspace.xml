@@ -3,8 +3,20 @@
   <component name="ChangeListManager">
     <list default="true" id="0d1d3129-4755-449f-95ec-5e82215a7ee4" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Algorithm/summary.py" beforeDir="false" afterPath="$PROJECT_DIR$/Algorithm/summary.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Algorithm/Model/LinearRegression.py" beforeDir="false" afterPath="$PROJECT_DIR$/Algorithm/Model/LinearRegression.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Algorithm/Optimizer/AdagradOptimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Algorithm/Optimizer/AdagradOptimizer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Algorithm/Optimizer/AdamOptimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Algorithm/Optimizer/AdamOptimizer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Algorithm/Optimizer/GradientDescentOptimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Algorithm/Optimizer/GradientDescentOptimizer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Algorithm/Optimizer/MomentumGradientDescentOptimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Algorithm/Optimizer/MomentumGradientDescentOptimizer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Algorithm/Optimizer/OptimizerRender.py" beforeDir="false" afterPath="$PROJECT_DIR$/Algorithm/Optimizer/OptimizerRender.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Algorithm/Optimizer/RMSpropOptimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Algorithm/Optimizer/RMSpropOptimizer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataUtil/DataHolder.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataUtil/DataHolder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LinearRegressionTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/LinearRegressionTest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/Widgets/LinearRegressionWidget.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI/Widgets/LinearRegressionWidget.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/Widgets/LoadDataArea.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI/Widgets/LoadDataArea.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/Widgets/PlotDataArea.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI/Widgets/PlotDataArea.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/Windows/ModelFrameWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI/Windows/ModelFrameWindow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Util/Params.py" beforeDir="false" afterPath="$PROJECT_DIR$/Util/Params.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +65,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/data/data" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -148,22 +160,38 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1589958347972" />
-    <state width="1419" height="244" key="GridCell.Tab.0.bottom" timestamp="1589962272467">
+    <state width="1419" height="244" key="GridCell.Tab.0.bottom" timestamp="1590134039682">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="244" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1589962272467" />
-    <state width="1419" height="244" key="GridCell.Tab.0.center" timestamp="1589962272466">
+    <state width="1419" height="244" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1590134039682" />
+    <state width="1419" height="244" key="GridCell.Tab.0.center" timestamp="1590134039681">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="244" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1589962272466" />
-    <state width="1419" height="244" key="GridCell.Tab.0.left" timestamp="1589962272466">
+    <state width="1419" height="244" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1590134039681" />
+    <state width="1419" height="244" key="GridCell.Tab.0.left" timestamp="1590134039680">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="244" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1589962272466" />
-    <state width="1419" height="244" key="GridCell.Tab.0.right" timestamp="1589962272467">
+    <state width="1419" height="244" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1590134039680" />
+    <state width="1419" height="244" key="GridCell.Tab.0.right" timestamp="1590134039681">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1419" height="244" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1589962272467" />
+    <state width="1419" height="244" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1590134039681" />
+    <state width="1419" height="223" key="GridCell.Tab.1.bottom" timestamp="1590130334685">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="223" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1590130334685" />
+    <state width="1419" height="223" key="GridCell.Tab.1.center" timestamp="1590130334684">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="223" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1590130334684" />
+    <state width="1419" height="223" key="GridCell.Tab.1.left" timestamp="1590130334683">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="223" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1590130334683" />
+    <state width="1419" height="223" key="GridCell.Tab.1.right" timestamp="1590130334684">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="223" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1590130334684" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

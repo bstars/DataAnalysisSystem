@@ -48,7 +48,7 @@ class PlotDataArea(QScrollArea):
 
     def imshow(self, num=None):
         self.clear()
-        X, title = self.holder.fetchAll()
+        X, title = self.holder.fetchPlot()
         m = len(X)
 
         cmap = None
@@ -69,7 +69,8 @@ class PlotDataArea(QScrollArea):
 
     def histogram(self):
         self.clear()
-        X, title = self.holder.fetchAll()
+        X,title = self.holder.fetchPlot()
+
         X = X.T
         m = len(X)
         if title is None:

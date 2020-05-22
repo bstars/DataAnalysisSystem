@@ -11,7 +11,7 @@ class GradientDescentOptimizer(Optimizer):
         self.max_iter = max_iter
 
 
-    def fit(self, W, fn_grad):
+    def fit(self, W, fn_grad, callback=None):
         """
         :param W: A dictionary which contains the initial value of weights
         :param X: X
@@ -35,7 +35,8 @@ class GradientDescentOptimizer(Optimizer):
             for key in grad_dict.keys():
                 weight_key = key[1:]
                 W_dict[weight_key] -= learning_rate * grad_dict[key]
-
+                if callback is not None:
+                    callback(iter, W_dict)
         return W_dict
 
 

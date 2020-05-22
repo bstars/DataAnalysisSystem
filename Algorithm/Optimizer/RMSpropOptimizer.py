@@ -15,7 +15,7 @@ class RMSpropOptimizer(Optimizer):
         self.eps = 1e-6
 
 
-    def fit(self, W, fn_grad):
+    def fit(self, W, fn_grad, callback=None):
         """
         :param W: A dictionary which contains the initial value of weights
         :param X: X
@@ -59,4 +59,6 @@ class RMSpropOptimizer(Optimizer):
                 which means that earlier gradient contributes less to current normalization.
                 """
                 W_dict[weight_key] -= learning_rate * grad_dict[grad_key] / (np.sqrt(accumulated) + eps)
+                if callback is not None:
+                    callback(iter, W_dict)
         return W_dict

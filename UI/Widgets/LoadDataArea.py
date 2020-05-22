@@ -57,7 +57,12 @@ class LoadDataArea(QWidget):
     def load_mat(self):
         filename = QFileDialog.getOpenFileName(self, 'Open file',
                                                '~', "mat files (*.mat)")
-        print(filename)
+        if filename[0] != "":
+            try:
+                self.holder.parse_mat(filename[0])
+                self.partener.histogram()
+            except Error as e:
+                print_error_message(e.what())
 
     def load_imgs(self):
         files = QFileDialog.getOpenFileNames(self, 'Open file',

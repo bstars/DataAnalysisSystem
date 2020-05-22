@@ -16,7 +16,7 @@ class MomentumGradientDescentOptimizer(Optimizer):
 
 
 
-    def fit(self, W, fn_grad):
+    def fit(self, W, fn_grad, callback=None):
         """
         :param W: A dictionary which contains the initial value of weights
         :param X: X
@@ -47,5 +47,6 @@ class MomentumGradientDescentOptimizer(Optimizer):
                 v = self.learning_rate * grad_dict[grad_key] + momentum * dW_prev_dict[grad_key]
                 W_dict[weight_key] -= v
                 dW_prev_dict[grad_key] = v
-
+                if callback is not None:
+                    callback(iter, W_dict)
         return W_dict

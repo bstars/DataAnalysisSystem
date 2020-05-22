@@ -18,6 +18,10 @@ class ModelFrameWindow(FrameWindow):
     def setupView(self):
         self.dataArea = DataArea(self.holder)
         self.layout = QVBoxLayout()
+        self.layout.setContentsMargins(2,2,2,2)
+        self.layout.setSpacing(5)
+        self.layout.setAlignment(Qt.AlignLeft)
+        self.layout.addStretch(1)
         self.setCentralLayout(self.layout)
 
     def insertWidget(self, idx, widget):

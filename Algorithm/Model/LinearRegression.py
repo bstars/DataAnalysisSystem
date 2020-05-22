@@ -10,24 +10,33 @@ from .helper_functions import *
 
 class LinearRegression():
     def __init__(self):
-        pass
+        self.setted = False
+
+    def set(self):
+        return self.setted
 
     def setup(self, X, y, regularization):
+        self.setted = True
         self.y = y
         self.X = addBias(X)
         m,n = self.X.shape
+        self.reg = regularization
 
         self.W_dict = {'W': np.random.normal(size=[n])}
-        self.regularization = regularization
 
-    def fit_gradient_descent(self, learning_rate, max_iter, optim, **kwargs):
+
+        print(self.X)
+        print("LR setup:", self.X.shape, self.y.shape)
+
+    def fit_gradient_descent(self, learning_rate, max_iter, optim, callback, **kwargs):
         optimizer = render_optimizer(learning_rate, max_iter, optim, **kwargs)
-
-
-        try:
-            self.W_dict = optimizer.fit(self.W_dict, self.gradient)
-        except Exception as e:
-            print_error_message("LinearRegression, Gradient Error")
+        def __callback(iter, w_dict):
+            callback(iter, self.loss(self.y, self.X @ w_dict['W']))
+        self.W_dict = optimizer.fit(self.W_dict, self.gradient, callback=__callback)
+        # try:
+        #     self.W_dict = optimizer.fit(self.W_dict, self.gradient)
+        # except Exception as e:
+        #     print_error_message("LinearRegression, Gradient Error")
 
 
     def fit_close_form(self):
@@ -58,17 +67,19 @@ class LinearRegression():
         m,n = X.shape
         W = W_dict['W']
         yhat = X @ W
-        loss = self.loss(y, yhat)
-        print("loss: ", loss)
+
 
         # backward pass
         dl_dyhat = 2 / m * (yhat - y)
         dl_dw = np.transpose(X) @ dl_dyhat
-        dl_dw += self.regularization * 2 * W
+        dl_dw += self.reg * 2 * W
         return {'dW': dl_dw}
 
     def getWeight(self):
         return self.W_dict['W']
+
+    def getWeightDic(self):
+        return self.W_dict
 
     # @classmethod
     # def addBias(self, X):

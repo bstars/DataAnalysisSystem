@@ -17,7 +17,8 @@ ys = 0.5 * Xs + 2 + np.random.normal(size=[m]) * 0.05
 
 
 
-lr = LinearRegression(Xs, ys, 0)
+lr = LinearRegression()
+lr.setup(Xs, ys, 0)
 # lr.fit_gradient_descent(0.02, max_iter=1000, optim='GradientDescent')
 # lr.fit_gradient_descent(learning_rate=0.3, max_iter=200, optim="Adam", beta1=0.9, beta2=0.99)
 # lr.fit_gradient_descent(learning_rate=0.15, max_iter=500, optim="RMSprop", decay_rate=0.9)
