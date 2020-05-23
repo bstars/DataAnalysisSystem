@@ -71,7 +71,7 @@ class LoadDataArea(QWidget):
         if len(filenames) != 0:
             try:
                 self.holder.parse_images(filenames)
-                self.partener.imshow(num=10)
+                self.partener.imshow(num=min(10, len(filenames)))
             except Error as e:
                 print_error_message(e.what())
 

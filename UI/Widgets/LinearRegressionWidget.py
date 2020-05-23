@@ -2,7 +2,7 @@ import sys
 sys.path.append("../..")
 
 
-from PyQt5.QtWidgets import QLabel, QWidget, QHBoxLayout, QLineEdit, QFormLayout, QPushButton, QFileDialog
+from PyQt5.QtWidgets import QWidget, QHBoxLayout, QLineEdit, QFormLayout, QPushButton, QFileDialog
 from PyQt5.QtWidgets import QScrollArea, QTextEdit, QComboBox
 from PyQt5.QtGui import QDoubleValidator, QIntValidator
 from PyQt5.QtCore import Qt
@@ -194,7 +194,7 @@ class LinearRegressionWidget(QWidget):
         self.ax.cla()
 
         X, y, title = self.holder.fetch_ordered(1)
-        self.ax.plot(X,y, 'ro')
+        self.ax.plot(X,y, 'ro', markersize=1)
 
         Xorder, y, title = self.holder.fetch_ordered(self.order)
         ypred = self.model.predict(Xorder)

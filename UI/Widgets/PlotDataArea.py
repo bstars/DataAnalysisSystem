@@ -19,9 +19,9 @@ plt.rcParams.update({'font.size': 5})
 
 
 class PlotDataArea(QScrollArea):
-    def __init__(self, holder:DataHolder):
+    def __init__(self, holder:DataHolder, h=Params.PLOT_AREA_HEIGHT):
         super(PlotDataArea, self).__init__()
-        self.h = Params.PLOT_AREA_HEIGHT
+        self.h = h
         self.holder = holder
         self.setFixedHeight(self.h)
 
@@ -32,8 +32,9 @@ class PlotDataArea(QScrollArea):
         self.setWidgetResizable(True)
         self.setWidget(self.scrollWidget)
 
-    def plot(self):
+    def plot(self, ):
         self.clear()
+
         X, title = self.holder.fetchAll()
         m = len(X)
         if title is None:
@@ -56,9 +57,9 @@ class PlotDataArea(QScrollArea):
             cmap = 'gray'
 
         if num is None:
-            m = min(10, m)
+            num = min(10, m)
 
-        for i in range(m):
+        for i in range(num):
             fig = plt.Figure()
             canvas = FigureCanvas(fig)
             canvas.setMinimumSize(canvas.size())
@@ -85,9 +86,6 @@ class PlotDataArea(QScrollArea):
             ax.legend()
             self.addWidget(canvas)
 
-
-
-
     def addWidget(self, widget:QWidget):
         scale = self.h / widget.height()
         widget.setFixedHeight(widget.height() * scale - 15)
@@ -98,6 +96,9 @@ class PlotDataArea(QScrollArea):
         layout = self.scrollLayout
         for i in reversed(range(layout.count())):
             layout.itemAt(i).widget().setParent(None)
+
+    def renderHolder(self):
+        return self.holder
 
 
 

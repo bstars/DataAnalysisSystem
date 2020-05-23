@@ -4,7 +4,7 @@ from scipy.io import savemat
 
 
 
-m = 300
+m = 100
 
 Xs = np.linspace(1, 6, m)
 ones = np.ones(100)

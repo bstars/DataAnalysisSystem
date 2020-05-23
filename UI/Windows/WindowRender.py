@@ -13,8 +13,7 @@ from Util.ErrorMessage import print_error_message, Error
 def render_window(classname):
     holder = DataHolder()
     window = ModelFrameWindow()
-    window.setWindowTitle(classname
-                          )
+    window.setWindowTitle(classname)
     if classname == "PCA":
         widget = PCAWidget(holder)
     elif classname == "Linear Regression":
@@ -28,7 +27,6 @@ def render_window(classname):
 
     window.insertWidget(0, dataArea)
     window.insertWidget(0, widget)
-
 
     return window
 

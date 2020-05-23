@@ -16,6 +16,9 @@ class DataHolder:
         self.title = None
         self.data_loaded = False
 
+    def give(self, X):
+        self.X = X
+
     def loaded(self):
         return self.data_loaded
 
@@ -34,12 +37,19 @@ class DataHolder:
     def parse_mat(self, filename):
         dic = loadmat(filename)
         self.X = np.array(dic['X']).squeeze()
-        self.y = np.array(dic['y']).squeeze()
+        try:
+            self.y = np.array(dic['y']).squeeze()
+        except:
+            self.y = None
         self.data_loaded = True
 
+    def fetchAll(self):
+        if self.y is None:
+            return self.X
+        else:
+            return np.vstack([self.X.T, self.y]).T
 
     def parse_images(self, filenames):
-
         X = []
         for i in range(len(filenames)):
             f = filenames[i]
@@ -50,14 +60,14 @@ class DataHolder:
                 if img.shape != self.shape:
                     raise Error("Images must have the same shape.")
             X.append(img)
-        self.X = np.array(X)
+        self.X = np.array(X, dtype=np.float)
         self.data_loaded = True
 
-    def fetchAll(self, order=1):
-        if order > 1:
-            X = self.fetch_ordered(order)
-            return X[:,:-1], X[:,-1], self.title
-        return self.X[:,:-1], self.X[:,-1], self.title
+    # def fetchAll(self, order=1):
+    #     if order > 1:
+    #         X = self.fetch_ordered(order)
+    #         return X[:,:-1], X[:,-1], self.title
+    #     return self.X[:,:-1], self.X[:,-1], self.title
 
     def fetchPlot(self):
         if self.y is not None:

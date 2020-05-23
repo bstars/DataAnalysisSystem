@@ -9,12 +9,16 @@ class PCA():
     Principle Component Analysis
     """
     def __init__(self):
-        pass
+        self.fitted = False
+
+    def isFitted(self):
+        return self.fitted
+
     def setup(self, X):
         original_shape = X.shape
         m = original_shape[0]
         self.n = np.array(original_shape[1:])
-
+        print("n:",self.n)
         self.X = self.normalize(np.reshape(X, [m,-1]))  # Normalize the data before running PCA
 
     @classmethod
@@ -37,12 +41,11 @@ class PCA():
         :return: eigenvalues and eigenvectors of X^T * X
         """
         U, lamb, Vt = np.linalg.svd(self.X)
+        print(Vt.shape, U.shape, lamb.shape)
         self.eigenvectors = Vt
 
-        # U, lamb, Vt = np.linalg.svd(self.X.T @ self.X)
-        # self.eigenvectors = U.T
-
         self.lamb = lamb
+        self.fitted = True
 
     def project(self, X, k):
         """
@@ -62,6 +65,9 @@ class PCA():
         all = np.sum(self.lamb** 2)
         print("PCA_Project: Variation retained: %.2f" % float(retain / all))    # Retained variation
         return np.array(X @ np.transpose(self.eigenvectors[:k]))
+
+    def projectOnEigenvectors(self, X, vecs):
+        return np.array(X @ np.transpose(vecs))
 
     def reconstruct(self, proj):
         """
@@ -91,7 +97,8 @@ class PCA():
 
     def nearest(self,X,x_ground,k,num):
         if num >= len(X):
-            print_error_message("PrincipleComponentAnalysis", "Too large a number")
+            print_error_message("PrincipleComponentAnalysis, too large a number")
+
 
         X = np.concatenate([X, [x_ground]], axis=0)
         proj = self.project(X, k)
